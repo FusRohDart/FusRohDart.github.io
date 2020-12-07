@@ -60,7 +60,7 @@ export default function signup() {
 }
 
 /*
-const url = 'https://api.trumail.io/v2/lookups/json?email='; 
+const url = 'https://api.trumail.io/v2/lookups/JSON?email='; 
 const email = 'nabyl0405@gmail.com'; 
 
 const verifyEmail = async () => {
