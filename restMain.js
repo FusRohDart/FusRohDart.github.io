@@ -1,39 +1,36 @@
+
 //Imports 
 const express = require('express'); 
 const firebase = require('firebase') 
 
+//Server initialization
 const restServer = express(); 
+
+// Database Initialization
+const database = firebase.initializeApp({
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID
+}) 
+
+const questionList = document.getElementById('questionPosts'); 
+
+const dbRefQuestionList = firebase.database().ref().child('questionPosts'); 
+
+dbRefQuestionList.on('value', values => {
+    questionList.innerText = JSON.stringify(values.val(), null, 3);
+}); 
 
 restServer.get('/questions', (request, response) => { 
     response.send(request.query.SortBy); 
 });  
 
-// Sample Class for Posts
-class post { 
-    constructor(userName, title, body, type, upCount, downCount) {
-        this._userName = userName; 
-        this._title = title; 
-        this._body = body; 
-        this._type = type; 
-        this._upCount = upCount; 
-        this._downCount = downCount;
-    } 
-
-    get userName() { return this._userName; } 
-    get title() { return this._title; } 
-    get body() { return this._body; } 
-    get type() { return this._type; }
-}
-
-let clarkQ = new post (
-    'Clark', 
-    'What is JavaScript?', 
-    'I have recently come across Javascript and I am having trouble understanding it', 
-    'q', 
-    4, 0 
-); 
-
 //Port Variable
 const port = process.env.PORT || 3000; 
 
+//Listen on Port
 restServer.listen(port, () => {console.log(`Listening on ${port}...`)}); 
