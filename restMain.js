@@ -17,14 +17,6 @@ const database = firebase.initializeApp({
     appId: process.env.REACT_APP_FIREBASE_APP_ID
 }) 
 
-const questionList = document.getElementById('questionPosts'); 
-
-const dbRefQuestionList = firebase.database().ref().child('questionPosts'); 
-
-dbRefQuestionList.on('value', values => {
-    questionList.innerText = JSON.stringify(values.val(), null, 3);
-}); 
-
 restServer.get('/questions', (request, response) => { 
     response.send(request.query.SortBy); 
 });  
