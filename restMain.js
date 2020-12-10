@@ -24,31 +24,27 @@ main.connect((error) => {
     }
 })
 
+// Queries
 restServer.get('/database', (req, res) => {
-    let query = "DROP DATABSE [IF EXISTS] main";
+    let query = "SELECT IF(EXISTS (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'main'), 'Yes','No')";
     main.query(query, (error, result) => {
         if (error) {
             throw error;
         } 
-        else if (result === '0 row(s) affected') {
-            console.log(result); 
-            res.send ('Database already exists.'); 
+        else if (result === 'Yes') {
+            return res.send("Database main already exists");
         } 
-        else {
-            let query = "CREATE DATABASE main"; 
+        else if (result === 'No') {
+            let query = "CREATE DATBASE main";
             main.query(query, (error, result) => {
-                if (error) {
-                    throw error;
-                } 
-                console.log(result);
-                res.send('Database created!');
-            })      
+                if (error) throw error
+            });
         }
-    })
+    });
 }); 
 
 restServer.get('/database/questions', (req, res) => {
-    let query = "CREATE TABLE questions (question_ID INT AUTO_INCREMENT, title VARCHAR (175), body VARCHAR (255), vote_up_count SMALLINT, vote_down_count SMALLINT)";
+    let query = "CREATE TABLE questions (question_ID INT AUTO_INCREMENT, title VARCHAR (175), body VARCHAR (255), vote_up_count SMALLINT, vote_down_count SMALLINT PRIMARY KEY (question_ID))";
     main.query(query, (error, result) => {
         if (error) throw error; 
         console.log(result); 
