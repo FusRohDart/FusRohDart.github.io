@@ -1,28 +1,63 @@
 
-//Imports 
+// Imports 
 const express = require('express'); 
-const firebase = require('firebase') 
+const firebase = require('firebase'); 
+const mysql = require('mysql'); 
 
-//Server initialization
+// Server initialization
 const restServer = express(); 
 
-// Database Initialization
-const database = firebase.initializeApp({
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID
-}) 
+// Creating a MySQL connection
+const main = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'Dovahkiin@0405'
+  });
 
-restServer.get('/questions', (request, response) => { 
-    response.send(request.query.SortBy); 
-});  
+// Connect 
+main.connect((error) => {
+    if (error) {
+        throw error; 
+    } 
+    else {
+        console.log('Connection successful!');
+    }
+})
 
-//Port Variable
+restServer.get('/database', (req, res) => {
+    let query = "DROP DATABSE [IF EXISTS] main";
+    main.query(query, (error, result) => {
+        if (error) {
+            throw error;
+        } 
+        else if (result === '0 row(s) affected') {
+            console.log(result); 
+            res.send ('Database already exists.'); 
+        } 
+        else {
+            let query = "CREATE DATABASE main"; 
+            main.query(query, (error, result) => {
+                if (error) {
+                    throw error;
+                } 
+                console.log(result);
+                res.send('Database created!');
+            })      
+        }
+    })
+}); 
+
+restServer.get('/database/questions', (req, res) => {
+    let query = "CREATE TABLE questions (question_ID INT AUTO_INCREMENT, title VARCHAR (175), body VARCHAR (255), vote_up_count SMALLINT, vote_down_count SMALLINT)";
+    main.query(query, (error, result) => {
+        if (error) throw error; 
+        console.log(result); 
+        res.send(`Query ${query} was successful! Questions table created.`); 
+    })
+})
+
+// Port Variable
 const port = process.env.PORT || 3000; 
 
-//Listen on Port
+// Listen on Port
 restServer.listen(port, () => {console.log(`Listening on ${port}...`)}); 
