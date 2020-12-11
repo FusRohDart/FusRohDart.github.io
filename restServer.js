@@ -1,18 +1,10 @@
 
 // Imports 
-const express = require('express'); 
-const firebase = require('firebase'); 
+const express = require('express');  
 const mysql = require('mysql'); 
 
 // Server initialization
 const restServer = express(); 
-
-// Creating a MySQL connection
-const main = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'Dovahkiin@0405'
-});
 
 // Connect 
 main.connect((error) => {
