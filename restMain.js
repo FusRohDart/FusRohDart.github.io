@@ -46,7 +46,9 @@ restServer.get('/database', (req, res) => {
     }); 
 });
 
-// Create questions table
+// Routes for questions
+
+
 restServer.get('/database/questions', (req, res) => {
     let query = "SHOW TABLES FROM main LIKE 'questions'"; 
     main.query(query, (error, result) => {
@@ -56,7 +58,7 @@ restServer.get('/database/questions', (req, res) => {
         else if (result) {
             console.log(result); 
             let newQuestion = req.query.create;
-            console.log(newQuestion);
+            
             res.send(`Table questions already exists.`); 
         } 
         else {
