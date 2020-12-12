@@ -1,4 +1,5 @@
 const mysql = require('mysql'); 
+const catchErrors = require('../_middleware/error-handler');
 
 initializeDB();
 
@@ -9,9 +10,7 @@ async function initializeDB() {
         user     : process.env.MYSQL_DB_USER || 'root',
         password : process.env.MYSQL_DB_PASS || 'Dovahkiin@0405'
     });
-
-    let query = "SHOW DATABASES LIKE 'main'";
-    await connectMySQL.query(query, (error, result) => {
-
-    });
+    
+    await connectMySQL.query(`CREATE DATABASE IF NOT EXISTS ${process.env.MYSQL_DB_NAME};`);
+    await connectMySQL.query("CREATE TABLE IF NOT EXISTS questions");
 }
