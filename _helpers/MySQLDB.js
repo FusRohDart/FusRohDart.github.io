@@ -15,7 +15,8 @@ async function initializeDB() {
 
     const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
 
-    db.questions = require('../Q-posts/Q-posts.model')(sequelize); 
+    db.questions = require('../Q-posts/Q-posts.model')(sequelize);
+    db.answers = require('../A-posts/A-posts.model')(sequelize);
 
     await sequelize.sync();
 }
