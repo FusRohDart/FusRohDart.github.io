@@ -1,5 +1,5 @@
 // Imports 
-const express = require('express');
+import express from 'express';
 
 // Server initialization
 const restServer = express();

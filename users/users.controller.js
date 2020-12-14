@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const Joi = require('joi');
-const validateRequest = require('../_middleware/validate-request').default;
-const authorize = require('../_middleware/authorize')
-const userService = require('./user.services');
+import { Router } from 'express';
+import { object, string } from 'joi';
+import validateRequest from '../_middleware/validate-request';
+import authorize from '../_middleware/authorize';
+import { authenticate as _authenticate, create, getAll as _getAll, getById as _getById, update as _update, _delete } from './user.services';
+const router = Router();
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
@@ -12,42 +12,42 @@ router.get('/', authorize(), getAll);
 router.get('/current', authorize(), getCurrent);
 router.get('/:id', authorize(), getById);
 router.put('/:id', authorize(), updateSchema, update);
-router.delete('/:id', authorize(), _delete);
+router.delete('/:id', authorize(), deleteUser);
 
-module.exports = router;
+export default router;
 
 function authenticateSchema(req, res, next) {
-    const schema = Joi.object({
-        username: Joi.string().required(),
-        password: Joi.string().required()
+    const schema = object({
+        username: string().required(),
+        password: string().required()
     });
     validateRequest(req, next, schema);
 }
 
 function authenticate(req, res, next) {
-    userService.authenticate(req.body)
+    _authenticate(req.body)
         .then(user => res.json(user))
         .catch(next);
 }
 
 function registerSchema(req, res, next) {
-    const schema = Joi.object({
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
-        username: Joi.string().required(),
-        password: Joi.string().min(6).required()
+    const schema = object({
+        firstName: string().required(),
+        lastName: string().required(),
+        username: string().required(),
+        password: string().min(6).required()
     });
     validateRequest(req, next, schema);
 }
 
 function register(req, res, next) {
-    userService.create(req.body)
+    create(req.body)
         .then(() => res.json({ message: 'Registration successful' }))
         .catch(next);
 }
 
 function getAll(req, res, next) {
-    userService.getAll()
+    _getAll()
         .then(users => res.json(users))
         .catch(next);
 }
@@ -57,29 +57,29 @@ function getCurrent(req, res, next) {
 }
 
 function getById(req, res, next) {
-    userService.getById(req.params.id)
+    _getById(req.params.userID)
         .then(user => res.json(user))
         .catch(next);
 }
 
 function updateSchema(req, res, next) {
-    const schema = Joi.object({
-        firstName: Joi.string().empty(''),
-        lastName: Joi.string().empty(''),
-        username: Joi.string().empty(''),
-        password: Joi.string().min(6).empty('')
+    const schema = object({
+        firstName: string().empty(''),
+        lastName: string().empty(''),
+        username: string().empty(''),
+        password: string().min(6).empty('')
     });
     validateRequest(req, next, schema);
 }
 
 function update(req, res, next) {
-    userService.update(req.params.id, req.body)
+    _update(req.params.id, req.body)
         .then(user => res.json(user))
         .catch(next);
 }
 
-function _delete(req, res, next) {
-    userService.delete(req.params.id)
+function deleteUser(req, res, next) {
+    _delete(req.params.id)
         .then(() => res.json({ message: 'User deleted successfully' }))
         .catch(next);
 }

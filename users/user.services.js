@@ -9,7 +9,7 @@ export default {
     getById,
     create,
     update,
-    delete: _delete
+    _delete
 };
 
 async function authenticate({ username, password }) {

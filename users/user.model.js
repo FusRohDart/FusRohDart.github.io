@@ -4,10 +4,6 @@ module.export = userModel;
 
 function userModel(sequelize) {
     const elements = {
-        userID: {
-            allowNull: false,
-            primaryKey: true
-        },
         userUUID: {
             allowNull: false,
             type: DataTypes.UUIDV4,
