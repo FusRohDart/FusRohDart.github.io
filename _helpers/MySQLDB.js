@@ -17,6 +17,7 @@ async function initializeDB() {
 
     db.questions = require('../Q-posts/Q-posts.model')(sequelize);
     db.answers = require('../A-posts/A-posts.model')(sequelize);
+    db.User = require('../users/user.model')(sequelize);
 
     await sequelize.sync();
 }

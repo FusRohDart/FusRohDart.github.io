@@ -6,7 +6,10 @@ function userModel(sequelize) {
     const elements = {
         userID: {
             allowNull: false,
-            primaryKey: true,
+            primaryKey: true
+        },
+        userUUID: {
+            allowNull: false,
             type: DataTypes.UUIDV4,
             defaultValue: DataTypes.UUIDV4,
             Validate: {
@@ -37,7 +40,7 @@ function userModel(sequelize) {
             type: DataTypes.SMALLINT,
             defaultValue: 0
         },
-        hash: {
+        passHash: {
             allowNull: false,
             type: DataTypes.STRING
         }
