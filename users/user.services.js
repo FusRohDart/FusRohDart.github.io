@@ -32,30 +32,30 @@ async function getById(id) {
 }
 
 async function create(params) {
-    // validate
+    // Check if the user already exists
     if (await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
     }
 
-    // hash password
+    // Auto-generate salt and hash
     if (params.password) {
-        params.hash = await bcrypt.hash(params.password, 10);
+        params.hash = await bcrypt.hash(params.password, 12);
     }
 
-    // save user
+    // Save new user
     await db.User.create(params);
 }
 
 async function update(id, params) {
     const user = await getUser(id);
 
-    // validate
+    // Check if the username already exists
     const usernameChanged = params.username && user.username !== params.username;
     if (usernameChanged && await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
     }
 
-    // hash password if it was entered
+    // Auto-generate salt and hash for new password if necessary
     if (params.password) {
         params.hash = await bcrypt.hash(params.password, 10);
     }
