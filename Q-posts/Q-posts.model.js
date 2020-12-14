@@ -29,4 +29,6 @@ function modelQ(sequelize) {
             defaultValue: 0
         }
     }
+
+    return sequelize.define('questions', elements);
 }

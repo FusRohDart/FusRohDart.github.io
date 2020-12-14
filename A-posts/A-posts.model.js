@@ -34,4 +34,6 @@ function modelA(sequelize) {
             defaultValue: 0
         }
     }
+
+    return sequelize.define('answers', elements);
 }
