@@ -32,10 +32,9 @@ function authenticate(req, res, next) {
 
 function registerSchema(req, res, next) {
     const schema = object({
-        firstName: string().required(),
-        lastName: string().required(),
-        username: string().required(),
-        password: string().min(6).required()
+        userName: string().required(),
+        email: string().required(),
+        password: string().min(10).required()
     });
     validateRequest(req, next, schema);
 }
@@ -64,9 +63,8 @@ function getById(req, res, next) {
 
 function updateSchema(req, res, next) {
     const schema = object({
-        firstName: string().empty(''),
-        lastName: string().empty(''),
-        username: string().empty(''),
+        userName: string().empty(''),
+        email: string().empty(''),
         password: string().min(6).empty('')
     });
     validateRequest(req, next, schema);

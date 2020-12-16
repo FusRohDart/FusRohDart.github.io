@@ -6,7 +6,7 @@ export default db = {};
 
 initializeDB();
 
-//Login to MySQL server
+// Login to MySQL server
 async function initializeDB() {
     // Initialize and create if database does not exist
     const {database, host, port, user, password} = _database;
