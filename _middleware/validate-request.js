@@ -1,4 +1,4 @@
-export default validateRequest;
+module.exports = validateRequest;
 
 function validateRequest(req, next, schema) {
     const options = {
