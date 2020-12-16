@@ -1,6 +1,6 @@
 const config = require('dbConfig.json');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const db = require('_helpers/MySQLDB');
 
 module.exports = {
