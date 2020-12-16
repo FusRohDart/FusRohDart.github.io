@@ -13,6 +13,7 @@ function userModel(sequelize) {
             type: DataTypes.STRING
         },
         userTitle: {
+            allowNull: false,
             type: DataTypes.STRING,
             DefaultValue: 'No title achieved yet.'
         },

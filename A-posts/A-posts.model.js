@@ -7,7 +7,7 @@ function modelA(sequelize) {
         aID: {
             allowNull: false,
             primaryKey: true,
-            type: DataTypes.UUIDV4,
+            type: DataTypes.CHAR(36),
             defaultValue: DataTypes.UUIDV4,
             Validate: {
                 notNull: {
