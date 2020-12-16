@@ -10,13 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/FusRohDart/FusRohDart.github.io.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FusRohDart/FusRohDart.github.io/issues"
   },
-  "homepage": "https://github.com/FusRohDart/FusRohDart.github.io#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",

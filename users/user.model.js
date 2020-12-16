@@ -4,16 +4,6 @@ module.exports = userModel;
 
 function userModel(sequelize) {
     const elements = {
-        userUUID: {
-            allowNull: false,
-            type: DataTypes.UUIDV4,
-            defaultValue: DataTypes.UUIDV4,
-            Validate: {
-                notNull: {
-                    msg: "Must not be null!"
-                }
-            }
-        },
         userName: {
             allowNull: false,
             type: DataTypes.STRING
@@ -23,7 +13,6 @@ function userModel(sequelize) {
             type: DataTypes.STRING
         },
         userTitle: {
-            allowNull: false,
             type: DataTypes.STRING,
             DefaultValue: 'No title achieved yet.'
         },
@@ -44,10 +33,10 @@ function userModel(sequelize) {
 
     const options = {
         defaultScope: {
-            attributes: { exclude: ['hash'] }
+            elements: { exclude: ['hash'] }
         },
         scopes: {
-            withHash: { attributes: {}, }
+            withHash: { elements: {}, }
         }
     };
 
