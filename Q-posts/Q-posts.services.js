@@ -1,3 +1,3 @@
-import db from '_helpers/db';
+const db = require('_helpers/MySQLDB');
 
 module.exports = {};

@@ -9,11 +9,6 @@ function modelQ(sequelize) {
             primaryKey: true,
             type: DataTypes.CHAR(36),
             defaultValue: DataTypes.UUIDV4,
-            Validate: {
-                notNull: {
-                    msg: "Must not be null!"
-                }
-            }
         },
         qTitle: {
             allowNull: false,
