@@ -17,6 +17,16 @@ async function initializeDB() {
     db.questions = require('../dbModels/question.model')(sequelize);
     db.answers = require('../dbModels/answer.model')(sequelize);
 
+    /*
+    let userTable = db.User;
+    let questionsTable = db.questions;
+    let answersTable = db.answers;
+
+    userTable.HasMany(questionsTable, {foreignKey: {name: 'userID', allowNull: false}});
+    userTable.HasMany(answersTable, {foreignKey: {name: 'userID', allowNull: false}});
+    questionsTable.HasMany(answersTable, {foreignKey: {name: 'qID', allowNull: false}});
+    */
+
     await sequelize.sync();
 }
 
