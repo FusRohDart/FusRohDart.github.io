@@ -10,13 +10,10 @@ function modelA(sequelize) {
             type: DataTypes.CHAR(36),
             defaultValue: DataTypes.UUIDV4,
         },
-        aTitle: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
         aBody: {
-            allowNull: false,
-            type: DataTypes.STRING
+            allowNull: true,
+            type: DataTypes.STRING,
+            defaultValue: ''
         },
         aUpCount: {
             allowNull: false,

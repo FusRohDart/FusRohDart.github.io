@@ -12,11 +12,13 @@ function modelQ(sequelize) {
         },
         qTitle: {
             allowNull: false,
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: 'Question must have a title.'
         },
         qBody: {
             allowNull: false,
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: 'Elaborate your question here.'
         },
         qUpCount: {
             allowNull: false,
