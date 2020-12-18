@@ -20,7 +20,7 @@ async function initializeDB() {
 
     db.Answer = require('../dbModels/answer.model')(sequelize);
 
-    await sequelize.sync();
+    await sequelize.sync({ alter: true });
     
 }
 
