@@ -15,10 +15,14 @@ async function initializeDB() {
     const sequelize = new Sequelize(database, user, password, { dialect: 'mysql' });
         
     db.User = require('../dbModels/user.model')(sequelize);
-
     db.Question = require('../dbModels/question.model')(sequelize);
-
     db.Answer = require('../dbModels/answer.model')(sequelize);
+
+    db.User.hasMany(db.Question, { as: 'asker', foreignKey: 'askerID' });
+    db.Question.belongsTo(db.User, { as: 'query', foreignKey: 'queryID' });
+
+    db.User.hasMany(db.Answer, { as: 'answerer', foreignKey: 'answererID' });
+    db.Answer.belongsTo(db.User, { as: 'solution', foreignKey: 'solutionID' });
 
     await sequelize.sync({ alter: true });
     
