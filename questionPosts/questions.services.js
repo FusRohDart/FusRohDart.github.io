@@ -22,5 +22,11 @@ async function createQuestion(params) {
 }
 
 async function updateVotes(id, params) {
+    const question = await getQuestion(id);
 
+    // Copy and save new vote count for the question
+    Object.assign(question, params);
+    await question.save();
+    
+    return question.get();
 }
