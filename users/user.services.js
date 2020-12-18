@@ -39,6 +39,9 @@ async function create(params) {
 
     // hash password
     if (params.password) {
+        throw 'Password required!';
+    }
+    else {
         params.passHash = await bcrypt.hash(params.password, 12);
     }
 
