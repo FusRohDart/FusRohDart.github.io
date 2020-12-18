@@ -34,7 +34,7 @@ function allQuestions(req, res, next) {
 
 function updateVoteSchema(req, res, next) {
     const schema = Joi.object({
-        qUpCount: Joi.number().min(0).integer().required()
+        qUpCount: Joi.number().min(0).integer().empty()
     });
     validateRequest(req, next, schema);
 }
