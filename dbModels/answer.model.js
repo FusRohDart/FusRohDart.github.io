@@ -27,5 +27,5 @@ function modelA(sequelize) {
         }
     }
 
-    return sequelize.define('answers', elements);
+    return sequelize.define('Answer', elements);
 }

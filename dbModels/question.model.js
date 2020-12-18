@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 
-module.export = modelQ;
+module.exports = modelQ;
 
 function modelQ(sequelize) {
     const elements = {
@@ -27,5 +27,5 @@ function modelQ(sequelize) {
         }
     }
 
-    return sequelize.define('questions', elements);
+    return sequelize.define('Question', elements);
 }
