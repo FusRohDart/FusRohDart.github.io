@@ -19,10 +19,13 @@ async function initializeDB() {
     db.Answer = require('../dbModels/answer.model')(sequelize);
 
     db.User.hasMany(db.Question, { as: 'asker', foreignKey: 'askerID' });
-    db.Question.belongsTo(db.User, { as: 'query', foreignKey: 'queryID' });
+    db.Question.belongsTo(db.User, { as: 'asker', foreignKey: 'askerID' });
 
     db.User.hasMany(db.Answer, { as: 'answerer', foreignKey: 'answererID' });
-    db.Answer.belongsTo(db.User, { as: 'solution', foreignKey: 'solutionID' });
+    db.Answer.belongsTo(db.User, { as: 'answerer', foreignKey: 'answererID' });
+
+    db.Question.hasMany(db.Answer, { as: 'query', foreignKey: 'queryID' });
+    db.Answer.belongsTo(db.Question, { as: 'query', foreignKey: 'queryID' });
 
     await sequelize.sync({ alter: true });
     
