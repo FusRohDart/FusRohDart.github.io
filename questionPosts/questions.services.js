@@ -3,7 +3,8 @@ const db = require('_helpers/MySQLDB');
 module.exports = {
     allQuestions,
     getQuestion,
-    createQuestion
+    createQuestion,
+    updateVotes
 };
 
 async function allQuestions() {
@@ -18,4 +19,8 @@ async function getQuestion(id) {
 
 async function createQuestion(params) {
     await db.Question.create(params);
+}
+
+async function updateVotes(id, params) {
+
 }
