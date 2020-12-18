@@ -1,17 +1,3 @@
-/*
-// Imports 
-import express from 'express';
-
-// Server initialization
-const restServer = express();
-
-// Port Variable
-const port = process.env.PORT || 3000;
-
-// Listen on Port
-restServer.listen(port, () => {console.log(`Listening on ${port}...`)});
-*/
-
 require('rootpath')(); 
 const express = require('express');
 const app = express();
@@ -23,12 +9,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-// api routes
+// Routes
 app.use('/users', require('./users/users.controller'));
 
-// global error handler
 app.use(errorHandler);
 
-// start server
+// Listen on process.env.PORT or 4000
 const port = process.env.PORT || 4000;
-app.listen(port, () => console.log('Server listening on port ' + port));
+app.listen(port, () => console.log(`Listening on ${port}`));

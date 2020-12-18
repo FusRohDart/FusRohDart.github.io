@@ -33,7 +33,7 @@ async function getById(id) {
 
 async function create(params) {
     // validate
-    if (await db.User.findOne({ where: { username: params.userName } })) {
+    if (await db.User.findOne({ where: { userName: params.userName } })) {
         throw 'Username "' + params.userName + '" is already taken';
     }
 
@@ -51,7 +51,7 @@ async function update(id, params) {
 
     // validate
     const usernameChanged = params.userName && user.userName !== params.userName;
-    if (usernameChanged && await db.User.findOne({ where: { username: params.userName } })) {
+    if (usernameChanged && await db.User.findOne({ where: { userName: params.userName } })) {
         throw 'Username "' + params.userName + '" is already taken';
     }
 
