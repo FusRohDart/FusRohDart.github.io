@@ -8,6 +8,7 @@ const questionService = require('./questions.services');
 // '/questions' routes
 router.post('/createNew', authorize(), newQuestionSchema, newQuestion);
 router.get('/', authorize(), allQuestions);
+router.put('updateVotes', authorize(), updateVoteSchema(), updateVoteCount())
 
 module.exports = router;
 
@@ -29,4 +30,11 @@ function allQuestions(req, res, next) {
     questionService.allQuestions()
         .then((questions) => res.json(questions))
         .catch(next);
+}
+
+function updateVoteSchema(req, res, next) {
+    const schema = Joi.object({
+        qUpCount: Joi.number().min(0).integer().required()
+    });
+    validateRequest(req, next, schema);
 }
