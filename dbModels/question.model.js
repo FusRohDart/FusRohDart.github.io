@@ -18,7 +18,7 @@ function modelQ(sequelize) {
         qBody: {
             allowNull: false,
             type: DataTypes.STRING,
-            defaultValue: 'Elaborate your question here.'
+            defaultValue: 'Explain your question here.'
         },
         qUpCount: {
             allowNull: false,
