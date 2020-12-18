@@ -7,6 +7,7 @@ const questionService = require('./questions.services');
 
 // '/questions' routes
 router.post('/createNew', authorize(), newQuestionSchema, newQuestion);
+router.get('/', authorize(), allQuestions);
 
 module.exports = router;
 
@@ -21,5 +22,11 @@ function newQuestionSchema(req, res, next) {
 function newQuestion(req, res, next) {
     questionService.createQuestion(req.body)
         .then(() => res.json({ message: 'Question created successfully!' }))
+        .catch(next);
+}
+
+function allQuestions(req, res, next) {
+    questionService.allQuestions()
+        .then((questions) => res.json(questions))
         .catch(next);
 }
