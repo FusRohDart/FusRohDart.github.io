@@ -8,6 +8,7 @@ const questionService = require('./questions.services');
 // '/questions' routes
 router.post('/createNew', authorize(), newQuestionSchema, newQuestion);
 router.get('/', authorize(), allQuestions);
+router.get('/:qID', authorize(), questionByID());
 router.put('/:qID', authorize(), updateVoteSchema(), updateVoteCount());
 
 module.exports = router;
@@ -30,6 +31,10 @@ function allQuestions(req, res, next) {
     questionService.allQuestions()
         .then((questions) => res.json(questions))
         .catch(next);
+}
+
+function questionByID(req, res, next) {
+    
 }
 
 function updateVoteSchema(req, res, next) {
