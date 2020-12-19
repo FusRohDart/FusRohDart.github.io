@@ -17,15 +17,25 @@ async function initializeDB() {
     db.User = require('../dbModels/user.model')(sequelize);
     db.Question = require('../dbModels/question.model')(sequelize);
     db.Answer = require('../dbModels/answer.model')(sequelize);
+    db.Comment = require('../dbModels/comment.model')(sequelize);
 
-    db.User.hasMany(db.Question, { as: 'asker', foreignKey: 'askerID' });
-    db.Question.belongsTo(db.User, { as: 'asker', foreignKey: 'askerID' });
+    db.User.hasMany(db.Question, { as: 'asker', foreignKey: 'askerID', allowNull: true });
+    db.Question.belongsTo(db.User, { as: 'asker', foreignKey: 'askerID', allowNull: true });
 
-    db.User.hasMany(db.Answer, { as: 'answerer', foreignKey: 'answererID' });
-    db.Answer.belongsTo(db.User, { as: 'answerer', foreignKey: 'answererID' });
+    db.User.hasMany(db.Answer, { as: 'answerer', foreignKey: 'answererID', allowNull: true });
+    db.Answer.belongsTo(db.User, { as: 'answerer', foreignKey: 'answererID', allowNull: true });
 
-    db.Question.hasMany(db.Answer, { as: 'query', foreignKey: 'queryID' });
-    db.Answer.belongsTo(db.Question, { as: 'query', foreignKey: 'queryID' });
+    db.User.hasMany(db.Comment, { as: 'commenter', foreignKey: 'commenterID', allowNull: true });
+    db.Comment.belongsTo(db.User, { as: 'commenter', foreignKey: 'commenterID', allowNull: true });
+
+    db.Question.hasMany(db.Answer, { as: 'query', foreignKey: 'queryID', allowNull: true });
+    db.Answer.belongsTo(db.Question, { as: 'query', foreignKey: 'queryID', allowNull: true });
+
+    db.Question.hasMany(db.Comment, { as: 'commentQuery', foreignKey: 'cqID', allowNull: true });
+    db.Comment.belongsTo(db.Question, { as: 'commentQuery', foreignKey: 'cqID', allowNull: true });
+
+    db.Answer.hasMany(db.Comment, { as: 'answer', foreignKey: 'answerID', allowNull: true });
+    db.Comment.belongsTo(db.Answer, { as: 'answer', foreignKey: 'answerID', allowNull: true });
 
     await sequelize.sync({ alter: true });
     

@@ -10,8 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
-app.use('/users', require('./users/users.controller'));
-app.use('/questions', require('./questionPosts/questions.controller'));
+app.use('/user', require('./users/users.controller'));
 
 app.use(errorHandler);
 

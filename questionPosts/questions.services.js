@@ -8,18 +8,13 @@ module.exports = {
 };
 
 async function allQuestions() {
-    return await db.Question.findAll({ include: 'asker'});
+    return await db.Question.findAll({ include: 'asker' });
 }
 
 async function getQuestion(id) {
     const question = await db.Question.findOne({
-        where: { qID: id },
-        include: [
-            {
-                model: db.User,
-                as: 'asker'
-            }
-        ]
+        where: { id: id },
+        include: 'askerID'
     });
     if (!question) throw 'No such question found!';
     return question;

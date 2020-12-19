@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const questionService = require('./questions.services');
+const commentService = require('./comments.services');
 
-// '/questions' routes
-router.post('/createNew', newQuestionSchema, newQuestion);
-router.get('/', allQuestions);
-router.get('/:id', questionByID);
+// '/comments' routes
+router.post('/createNew', newCommentSchema, makeNewComment);
+router.get('/', allComments);
+router.get('/:id', commentByID);
 router.put('/:id', updateVoteSchema, updateVoteCount);
 
 module.exports = router;
@@ -17,41 +17,41 @@ module.exports = router;
 ----------------------------------------------------------------------------------------------------
 */
 
-function newQuestionSchema(req, res, next) {
+function newCommentSchema(req, res, next) {
     const schema = Joi.object({
-        qTitle: Joi.string().required(),
-        qBody: Joi.string().required()
+        cBody: Joi.string().required()
     });
     validateRequest(req, next, schema);
 }
 
-function newQuestion(req, res, next) {
-    questionService.createQuestion(req.body)
+function makeNewComment(req, res, next) {
+    commentService.createComment(req.body, req.query.postType, req.query.id)
         .then(() => res.json({ message: 'Question created successfully!' }))
         .catch(next);
 }
 
-function allQuestions(req, res, next) {
-    questionService.allQuestions()
+function allComments(req, res, next) {
+    commentService.allComments()
         .then(question => res.json(question))
         .catch(next);
 }
 
-function questionByID(req, res, next) {
-    questionService.getQuestionByID(req.params.id)
+function commentByID(req, res, next) {
+    commentService.getCommentnByID(req.params.id)
         .then(question => res.json(question))
         .catch(next);
 }
 
 function updateVoteSchema(req, res, next) {
     const schema = Joi.object({
-        qUpCount: Joi.number().min(0).integer().empty()
+        cUpCount: Joi.number().min(0).integer().empty(),
+        cDownCount: Joi.number().min(0).integer().empty()
     });
     validateRequest(req, next, schema);
 }
 
 function updateVoteCount(req, res, next) {
-    questionService.updateVoteUp(req.params.id, req.body)
+    commentService.updateVotes(req.params.id, req.body)
         .then(question => res.json(question))
         .catch(next);
 }

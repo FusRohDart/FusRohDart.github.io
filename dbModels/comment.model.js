@@ -1,25 +1,25 @@
 const { DataTypes } = require('sequelize');
 
-module.exports = modelA;
+module.exports = modelC;
 
-function modelA(sequelize) {
+function modelC(sequelize) {
     const elements = {
-        aBody: {
+        cBody: {
             allowNull: true,
             type: DataTypes.STRING,
-            defaultValue: 'Write your answer here.'
+            defaultValue: 'Write your comment here.'
         },
-        aUpCount: {
+        cUpCount: {
             allowNull: false,
             type: DataTypes.SMALLINT,
             defaultValue: 0
         },
-        aDownCount: {
+        cDownCount: {
             allowNull: false,
             type: DataTypes.SMALLINT,
             defaultValue: 0
         }
     }
 
-    return sequelize.define('Answer', elements);
+    return sequelize.define('Comment', elements);
 }

@@ -4,12 +4,6 @@ module.exports = modelQ;
 
 function modelQ(sequelize) {
     const elements = {
-        qID: {
-            allowNull: false,
-            primaryKey: true,
-            type: DataTypes.CHAR(36),
-            defaultValue: DataTypes.UUIDV4,
-        },
         qTitle: {
             allowNull: false,
             type: DataTypes.STRING,

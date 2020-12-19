@@ -7,16 +7,7 @@ module.exports = {
 
 async function allAnswers() {
     return await db.Answer.findAll({
-        include: [
-            {
-                model: db.User,
-                as: 'answerer'
-            },
-            {
-                model: db.Question,
-                as: 'query'
-            }
-        ]
+        include: ['queryID', 'answererID']
     });
 }
 
@@ -26,17 +17,8 @@ async function getAnswerByID(id) {
 
 async function getAnswer(id) {
     const answer = await db.Answer.findOne({
-        where: { aID: id }, 
-        include: [
-            {
-                model: db.User,
-                as: 'answerer'
-            },
-            {
-                model: db.Question,
-                as: 'query'
-            }
-        ]
+        where: { id: id }, 
+        include: ['queryID', 'answererID']
     });
     if (!answer) throw 'No such answer exists!';
     return answer;

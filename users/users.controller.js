@@ -13,8 +13,14 @@ router.get('/current', authorize(), getCurrent);
 router.get('/:id', authorize(), getById);
 router.put('/:id', authorize(), updateSchema, update);
 router.delete('/:id', authorize(), _delete);
+router.use('/questions', authorize(), require('../questionPosts/questions.controller'));
+
 
 module.exports = router;
+
+/*
+----------------------------------------------------------------------------------------------------
+*/
 
 function authenticateSchema(req, res, next) {
     const schema = Joi.object({
@@ -81,3 +87,7 @@ function _delete(req, res, next) {
         .then(() => res.json({ message: 'User deleted successfully' }))
         .catch(next);
 }
+
+/*
+----------------------------------------------------------------------------------------------------
+*/
