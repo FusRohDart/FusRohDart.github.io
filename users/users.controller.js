@@ -64,6 +64,7 @@ function getById(req, res, next) {
 function updateSchema(req, res, next) {
     const schema = Joi.object({
         userName: Joi.string().empty(''),
+        userDescription: Joi.string().empty(''),
         password: Joi.string().min(6).empty('')
     });
     validateRequest(req, next, schema);
