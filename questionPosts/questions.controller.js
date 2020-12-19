@@ -34,7 +34,9 @@ function allQuestions(req, res, next) {
 }
 
 function questionByID(req, res, next) {
-    
+    questionService.getQuestionByID(req.params.id)
+        .then((question) => res.json(question))
+        .catch(next);
 }
 
 function updateVoteSchema(req, res, next) {
