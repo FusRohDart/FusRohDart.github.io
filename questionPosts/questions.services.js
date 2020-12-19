@@ -4,7 +4,7 @@ module.exports = {
     allQuestions,
     getQuestionByID,
     createQuestion,
-    updateVotes
+    updateVoteUp
 };
 
 async function allQuestions() {
@@ -25,7 +25,7 @@ async function createQuestion(params) {
     await db.Question.create(params);
 }
 
-async function updateVotes(id, params) {
+async function updateVoteUp(id, params) {
     const question = await getQuestion(id);
 
     // Copy and save new vote count for the question
