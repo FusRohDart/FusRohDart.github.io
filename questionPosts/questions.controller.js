@@ -47,7 +47,7 @@ function updateVoteSchema(req, res, next) {
 }
 
 function updateVoteCount(req, res, next) {
-    questionService.updateVotes(req.params.qID, req.body)
+    questionService.updateVoteUp(req.params.qID, req.body)
         .then((question) => res.json(question))
         .catch(next);
 }
