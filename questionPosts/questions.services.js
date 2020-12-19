@@ -12,7 +12,15 @@ async function allQuestions() {
 }
 
 async function getQuestion(id) {
-    const question = await db.Question.findByPk(id);
+    const question = await db.Question.findOne({
+        where: { qID: id },
+        include: [
+            {
+                model: db.User,
+                as: 'asker'
+            }
+        ]
+    });
     if (!question) throw 'No such question found!';
     return question;
 }
