@@ -2,7 +2,7 @@ const db = require('_helpers/MySQLDB');
 
 module.exports = {
     allAnswers,
-    getAnswer
+    getAnswerByID
 };
 
 async function allAnswers() {
@@ -20,8 +20,24 @@ async function allAnswers() {
     });
 }
 
+async function getAnswerByID(id) {
+    return await getAnswer(id);
+}
+
 async function getAnswer(id) {
-    const answer = await db.Answer.findByPk(id);
+    const answer = await db.Answer.findOne({
+        where: { aID: id }, 
+        include: [
+            {
+                model: db.User,
+                as: 'answerer'
+            },
+            {
+                model: db.Question,
+                as: 'query'
+            }
+        ]
+    });
     if (!answer) throw 'No such answer exists!';
     return answer;
 }
