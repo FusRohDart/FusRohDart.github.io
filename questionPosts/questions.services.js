@@ -2,7 +2,7 @@ const db = require('_helpers/MySQLDB');
 
 module.exports = {
     allQuestions,
-    getQuestion,
+    getQuestionByID,
     createQuestion,
     updateVotes
 };
@@ -15,6 +15,10 @@ async function getQuestion(id) {
     const question = await db.Question.findByPk(id);
     if (!question) throw 'No such question found!';
     return question;
+}
+
+async function getQuestionByID(id) {
+    return await getQuestion(id);
 }
 
 async function createQuestion(params) {
