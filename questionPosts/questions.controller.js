@@ -6,7 +6,7 @@ const validateRequest = require('_middleware/validate-request');
 const questionService = require('./questions.services');
 
 // '/questions' routes
-router.post('/createNew', newQuestionSchema, newQuestion);
+router.post('/createnew', newQuestionSchema, newQuestion);
 router.get('/', allQuestions);
 router.get('/:id', questionByID);
 router.put('/:id', updateVoteSchema, updateVoteCount);

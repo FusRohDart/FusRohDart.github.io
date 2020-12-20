@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
-app.use('/user', require('./users/users.controller'));
+app.use('/users', require('./users/users.controller'));
 
 app.use(errorHandler);
 

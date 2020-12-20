@@ -26,21 +26,13 @@ async function getAnswer(id) {
     return answer;
 }
 
-function createAnswer(params, queryID) {
-    let id = parseInt(parentID, 10);
-    switch (type) {
-        case 'answer':
-            await db.Comment.create({ params, answerID: id });
-            break;
-        case 'question':
-            await db.Comment.create({ params, cqID: id });
-            break;
-        default:
-            throw 'Invalid type of post!';
-    }
+async function createAnswer(params, queryStrings) {
+    let queryID = parseInt(queryStrings.queryID, 10);
+    let answererID = parseInt(queryStrings.userID, 10);
+    await db.Answer.create({ params, queryID: queryID, answererID: answererID});
 }
 
-function updateVotes(id, params) {
+async function updateVotes(id, params) {
     let netCount = params.aUpCount - params.aDownCount;
     await db.Answer.update({ params, aNetVoteCount: netCount }, { where: { id: id }});
     const answer = await getAnswer(id);

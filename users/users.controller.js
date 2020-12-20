@@ -12,9 +12,11 @@ router.get('/', authorize(), getAll);
 router.get('/current', authorize(), getCurrent);
 router.get('/:id', authorize(), getById);
 router.put('/:id', authorize(), updateSchema, update);
+router.put('/:id', authorize(), pointCountSchema, updatePoints)
 router.delete('/:id', authorize(), _delete);
 router.use('/questions', authorize(), require('../questionPosts/questions.controller'));
-
+router.use('/answers', authorize(), require('../answerPosts/answers.controller'));
+router.use('/comments', authorize(), require('../comments/comments.controller'));
 
 module.exports = router;
 
@@ -78,6 +80,19 @@ function updateSchema(req, res, next) {
 
 function update(req, res, next) {
     userService.update(req.params.id, req.body)
+        .then(user => res.json(user))
+        .catch(next);
+}
+
+function pointCountSchema(req, res, next) {
+    const schema = Joi.object({
+        totalPoints: Joi.number().integer().empty()
+    });
+    validateRequest(req, next, schema);
+}
+
+function updatePoints(req, res, next) {
+    userService.updateTotalPoints(req.params.id, req.body)
         .then(user => res.json(user))
         .catch(next);
 }

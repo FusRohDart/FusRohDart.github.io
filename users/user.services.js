@@ -9,6 +9,7 @@ module.exports = {
     getById,
     create,
     update,
+    updateTotalPoints,
     delete: _delete
 };
 
@@ -38,7 +39,7 @@ async function create(params) {
     }
 
     // hash password
-    if (params.password) {
+    if (!params.password) {
         throw 'Password required!';
     }
     else {
@@ -68,6 +69,19 @@ async function update(id, params) {
     await user.save();
 
     return omitHash(user.get());
+}
+
+async function updateTotalPoints(id, params) {
+    const user = await getUser(id);
+
+    if (params.totalPoints !== user.totalPoints) {
+        await db.User.update(params, { where: { id: id } });
+        const user = await db.User.findOne({ where: { id: id } });
+        return user.get();
+    }
+    else {
+        return { message: 'Points do not need to be updated' };
+    }
 }
 
 async function _delete(id) {

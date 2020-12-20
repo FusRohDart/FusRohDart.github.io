@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
@@ -6,7 +5,7 @@ const validateRequest = require('_middleware/validate-request');
 const commentService = require('./comments.services');
 
 // '/comments' routes
-router.post('/createNew', newCommentSchema, makeNewComment);
+router.post('/createnew', newCommentSchema, makeNewComment);
 router.get('/', allComments);
 router.get('/:id', commentByID);
 router.put('/:id', updateVoteSchema, updateVoteCount);
@@ -25,7 +24,7 @@ function newCommentSchema(req, res, next) {
 }
 
 function makeNewComment(req, res, next) {
-    commentService.createComment(req.body, req.query.type, req.query.id)
+    commentService.createComment(req.body, req.query)
         .then(() => res.json({ message: 'Comment created successfully!' }))
         .catch(next);
 }
@@ -37,7 +36,7 @@ function allComments(req, res, next) {
 }
 
 function commentByID(req, res, next) {
-    commentService.getCommentnByID(req.params.id)
+    commentService.getCommentByID(req.params.id)
         .then(comment => res.json(comment))
         .catch(next);
 }

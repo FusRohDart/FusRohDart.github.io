@@ -26,9 +26,9 @@ async function getComment(id) {
     return comment;
 }
 
-function createComment(params, type, parentID) {
-    let id = parseInt(parentID, 10);
-    switch (type) {
+async function createComment(params, queryStrings) {
+    let id = parseInt(queryStrings.parentID, 10);
+    switch (queryStrings.type) {
         case 'answer':
             await db.Comment.create({ params, answerID: id });
             break;
@@ -40,7 +40,7 @@ function createComment(params, type, parentID) {
     }
 }
 
-function updateVotes(id, params) {
+async function updateVotes(id, params) {
     let netCount = params.cUpCount - params.cDownCount;
     await db.Comment.update({ params, cNetVoteCount: netCount }, { where: { id: id }});
     const comment = await getComment(id);
