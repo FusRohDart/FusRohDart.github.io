@@ -18,6 +18,11 @@ function modelC(sequelize) {
             allowNull: false,
             type: DataTypes.SMALLINT,
             defaultValue: 0
+        },
+        cNetVoteCount: {
+            allowNull: false,
+            type: DataTypes.SMALLINT,
+            defaultValue: 0
         }
     }
 

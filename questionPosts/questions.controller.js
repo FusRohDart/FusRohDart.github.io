@@ -26,7 +26,7 @@ function newQuestionSchema(req, res, next) {
 }
 
 function newQuestion(req, res, next) {
-    questionService.createQuestion(req.body)
+    questionService.createQuestion(req.body, req.query.id)
         .then(() => res.json({ message: 'Question created successfully!' }))
         .catch(next);
 }

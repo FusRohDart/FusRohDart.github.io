@@ -25,20 +25,20 @@ function newCommentSchema(req, res, next) {
 }
 
 function makeNewComment(req, res, next) {
-    commentService.createComment(req.body, req.query.postType, req.query.id)
-        .then(() => res.json({ message: 'Question created successfully!' }))
+    commentService.createComment(req.body, req.query.type, req.query.id)
+        .then(() => res.json({ message: 'Comment created successfully!' }))
         .catch(next);
 }
 
 function allComments(req, res, next) {
     commentService.allComments()
-        .then(question => res.json(question))
+        .then(comment => res.json(comment))
         .catch(next);
 }
 
 function commentByID(req, res, next) {
     commentService.getCommentnByID(req.params.id)
-        .then(question => res.json(question))
+        .then(comment => res.json(comment))
         .catch(next);
 }
 
@@ -52,7 +52,7 @@ function updateVoteSchema(req, res, next) {
 
 function updateVoteCount(req, res, next) {
     commentService.updateVotes(req.params.id, req.body)
-        .then(question => res.json(question))
+        .then(comment => res.json(comment))
         .catch(next);
 }
 

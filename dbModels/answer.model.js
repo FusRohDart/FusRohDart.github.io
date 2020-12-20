@@ -18,6 +18,11 @@ function modelA(sequelize) {
             allowNull: false,
             type: DataTypes.SMALLINT,
             defaultValue: 0
+        },
+        aNetVoteCount: {
+            allowNull: false,
+            type: DataTypes.SMALLINT,
+            defaultValue: 0
         }
     }
 

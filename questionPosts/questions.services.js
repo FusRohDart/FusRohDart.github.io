@@ -24,8 +24,9 @@ async function getQuestionByID(id) {
     return await getQuestion(id);
 }
 
-async function createQuestion(params) {
-    await db.Question.create(params);
+async function createQuestion(params, askerID) {
+    let id = parseInt(askerID, 10);
+    await db.Question.create({ params, askerID: id });
 }
 
 async function updateVoteUp(id, params) {
