@@ -1,7 +1,7 @@
 const config = require('dbConfig.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const db = require('_helpers/MySQLDB');
+const db = require('../answers/node_modules/_helpers/MySQLDB');
 
 module.exports = {
     authenticate,

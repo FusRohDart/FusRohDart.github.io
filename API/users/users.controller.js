@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-const validateRequest = require('_middleware/validate-request');
+const validateRequest = require('../answers/node_modules/_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const userService = require('./user.services');
 
@@ -14,8 +14,8 @@ router.get('/:id', authorize(), getById);
 router.put('/:id', authorize(), updateSchema, update);
 router.put('/:id', authorize(), pointCountSchema, updatePoints)
 router.delete('/:id', authorize(), _delete);
-router.use('/questions', authorize(), require('../questionPosts/questions.controller'));
-router.use('/answers', authorize(), require('../answerPosts/answers.controller'));
+router.use('/questions', authorize(), require('../questions/questions.controller'));
+router.use('/answers', authorize(), require('../answers/answers.controller'));
 router.use('/comments', authorize(), require('../comments/comments.controller'));
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
-const validateRequest = require('_middleware/validate-request');
+const validateRequest = require('../questions/node_modules/_middleware/validate-request');
 const answerService = require('./answers.services');
 
 // '/answers' routes

@@ -1,4 +1,4 @@
-const db = require('_helpers/MySQLDB');
+const db = require('../answers/node_modules/_helpers/MySQLDB');
 
 module.exports = {
     allComments,
