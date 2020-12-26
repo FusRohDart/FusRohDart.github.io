@@ -2,7 +2,7 @@
   "name": "fusrohdart.github.io",
   "version": "1.0.0",
   "description": "",
-  "main": "restServer.js",
+  "main": "restAPI.js",
   "scripts": {
     "start:dev": "nodemon restServer.js"
   },
