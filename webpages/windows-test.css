@@ -5,16 +5,16 @@
     border-collapse: separate;
     border-spacing: 1.5px 1.5px;
     border-radius: 40%;
-    transition: 0.5s;
+    transition: 0s;
 }
 
 .material-icons.md-default_type:hover {
     color: #055AC1;
-    border: 2.25px solid #055AC1;
+    border: 0px solid #055AC1;
     border-collapse: separate;
     border-spacing: 1.5px 1.5px;
     border-radius: 40%;
-    transition: 0.5s;
+    transition: 0s;
 }
 
 body {
@@ -31,15 +31,14 @@ body {
     overflow: hidden;
     background-color: #000;
     align-content: center;
+    vertical-align: center;
 }
 
 .topnav a.bar {
     color: #055AC1;
     float: right;
     text-align: center;
-    align-self: center;
     padding: 14px 16px;
-    margin-top: 5px;
     text-decoration: none;
     font-size: 18px;
 }
@@ -57,13 +56,13 @@ li {
 
 .logo {
     float: left;
-    align-self: center;
+    vertical-align: center;
     width: 40px;
     height: 40px;
+    padding-top: 5px;
+    padding-right: 10px;
     margin-left: 10px;
-    margin-right: -10px;
-    margin-top: 10px;
-    cursor: pointer;
+    margin-top: 5px;
 }
 
 .topnav a.b {
@@ -94,8 +93,6 @@ li {
     color: #0177FF;
     border: 0px solid #000;
     padding: 18px 20px;
-    margin-top: 4px;
-    align-self: center;
     font-family: Helvetica, sans-serif;
     font-weight: bold;
     font-size: 14px;
@@ -106,4 +103,27 @@ li {
     background-color: #EDD109;
     color: #055AC1;
     transition: 0.5s;
+}
+
+.column {
+  float: left;
+  padding: 0px;
+  height: 100%;
+  overflow: show;
+}
+
+.column.side {
+  width: 20%;
+  background-color: #100E20;
+}
+
+.column.middle {
+  width: 60%;
+  background-color: #100E20;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
 }
