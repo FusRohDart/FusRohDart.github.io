@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptDive</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="authstyles.css">
+    <link rel="stylesheet" type="text/css" href="main-test.css">
 </head>
 
 <body>
@@ -17,50 +19,80 @@
             <span id="title">CryptDive</span>
         </a>
         <li class="bar">
-            <a href="test-register.html">
-                <button class="button sign-up">Sign Up</button>
-            </a>
+            <button 
+                class="button sign-up" 
+                onclick="document.getElementById('sign-up').style.display='block'"
+            >Sign Up</button>
         </li>
         <li class="bar">
-            <a href="test-login.html">
-                <button class="button log-in">Log In</button>
-            </a>
+            <button 
+                class="button log-in" 
+                onclick="document.getElementById('log-in').style.display='block'"
+            >Log In</button>
         </li>
     </div>
 
-    <main class="main-holder login">
-        <h1>Login</h1>
-        <b>Please log in to enter</b>
-
-        <div id="error-msg-holder">
-            <p id="error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+    <div class="row">
+        <div class="column side"></div>
+        <div class="column middle">
+            <div id="log-in" class="modal login">
+                <main class="main-holder login">
+                    <h1>Login</h1>
+                    <b>Please log in to enter</b>
+            
+                    <div id="error-msg-holder">
+                        <p id="error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+                    </div>
+            
+                    <form id="form-body">
+                        <input type="text" name="username" class="form-field" placeholder="Username">
+                        <input type="password" name="password" class="form-field" placeholder="Password">
+                        <input type="submit" value="Login" id="form-submit">
+                    </form>
+            
+                </main>
+            </div>
+            
+            <div id="sign-up" class="modal signup">
+                <main class="main-holder signup">
+        
+                    <h1>Sign Up</h1>
+                    <b>Fill in the details to sign up.</b>
+            
+                    <div id="error-msg-holder">
+                        <p id="error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+                    </div>
+            
+                    <form id="form-body">
+                        <input type="text" name="username" class="form-field" placeholder="Username">
+                        <input type="text" name="email" class="form-field" placeholder="Email Address">
+                        <input type="password" name="password" class="form-field" placeholder="Password">
+                        <input type="password" name="confirmpassword" class="form-field" placeholder="Confirm Password">
+                        <input type="submit" value="Sign Up" id="form-submit">
+                    </form>
+            
+                </main>
+            </div>
         </div>
+        <div class="column side"></div>
+    </div>
 
-        <form id="form-body">
-            <input type="text" name="username" class="form-field" placeholder="Username">
-            <input type="password" name="password" class="form-field" placeholder="Password">
-            <input type="submit" value="Login" id="form-submit">
-        </form>
+    <script>
 
-    </main>
+        var login = document.getElementById('log-in');
+        var signup = document.getElementById('sign-up');
 
-    <main class="main-holder signup">
-        <h1>Sign Up</h1>
-        <b>Fill in the details to sign up.</b>
+        window.onclick = function (event) {
+            if (event.target == login) {
+                login.style.display = "none";
+            }
+            if (event.target == signup) {
+                signup.style.display = "none";
+            }
+        }
 
-        <div id="error-msg-holder">
-            <p id="error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-        </div>
+    </script>
 
-        <form id="form-body">
-            <input type="text" name="username" class="form-field" placeholder="Username">
-            <input type="text" name="email" class="form-field" placeholder="Email Address">
-            <input type="password" name="password" class="form-field" placeholder="Password">
-            <input type="password" name="confirmpassword" class="form-field" placeholder="Confirm Password">
-            <input type="submit" value="Sign Up" id="form-submit">
-        </form>
-
-    </main>
 </body>
 
 </html>

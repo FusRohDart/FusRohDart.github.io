@@ -1,0 +1,262 @@
+.material-icons.md-default_type {
+    color: #0177FF;
+    font-size: 20px;
+    border: 2.25px solid #0177FF;
+    border-collapse: separate;
+    border-spacing: 1.5px 1.5px;
+    border-radius: 40%;
+    transition: .5s;
+}
+
+.material-icons.md-default_type:hover {
+    color: #055AC1;
+    border: 2.25px solid #055AC1;
+    border-collapse: separate;
+    border-spacing: 1.5px 1.5px;
+    border-radius: 40%;
+    transition: .5s;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #100E20;
+}
+
+.column {
+    float: middle;
+    padding: 0px;
+    height: 100%;
+    overflow: show;
+}
+  
+.column.side {
+    width: 20%;
+    background-color: #100E20;
+}
+  
+.column.middle {
+    margin: auto;
+    padding: auto;
+    width: 60%;
+    background-color: #100E20;
+}
+  
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.main-holder {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 2px #0177FF;
+}
+
+.main-holder.login {
+    position: absolute;
+    width: 30%;
+    height: 60%;
+}
+
+.main-holder.signup {
+    position: absolute;
+    width: 40%;
+    height: 65%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 30px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(16, 14, 32);
+    background-color: rgba(16, 14, 32, 0.4);
+}
+
+.modal.signup {
+    margin-left: 9%;
+}
+
+.modal.login {
+    margin-left: 12.5%
+}
+
+#error-msg-holder {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+#error-msg {
+    width: 50%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+    border: 1px solid #000;
+    background-color: #FFF;
+    opacity: 0;
+}
+
+#error-msg-second-line {
+    display: block;
+}
+
+#form-body {
+    align-self: flex-start;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.form-field::placeholder {
+    font-family: Archivo, sans-serif;
+    color: #000;
+}
+
+.form-field {
+    border: none;
+    border-bottom: 1px solid #100E20;
+    margin-bottom: 15px;
+    outline: none;
+    padding: 5px 0px 4px 10px;
+}
+
+#form-submit {
+    width: 100%;
+    padding: 9px;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    border-radius: 20px;
+    border-collapse: separate;
+    border-spacing: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: #100E20;
+    cursor: pointer;
+    outline: none;
+}
+
+#form-submit:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#title {
+    font-family: Metrophobic, sans-serif;
+    font-size: 20px;
+}
+
+.logo {
+    float: left;
+    align-self: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: -10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.button {
+    border: none;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button.sign-up {
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.button.sign-up:hover {
+    background-color: #252627;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.button.log-in {
+    width: 100%;
+    background-color: #0177FF;
+    color: #fff;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.button.log-in:hover {
+    background-color: #055AC1;
+    transition: 0.5s;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #000;
+    align-content: center;
+}
+
+.topnav li.bar {
+    list-style-type: none;
+    width: 6.5%;
+    color: #055AC1;
+    float: right;
+    align-items: center;
+    padding: 16px 18px 0px 5px;
+}
+
+.topnav a.b {
+    float: left;
+    color: #055AC1;
+    text-align: center;
+    padding: 18px 18px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
