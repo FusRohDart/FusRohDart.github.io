@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptDive</title>
+    <link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="authstyles.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="b" href="index.html">
+            <span id="title">CryptDive</span>
+        </a>
+        <li class="bar">
+            <a href="test-register.html">
+                <button class="button sign-up">Sign Up</button>
+            </a>
+        </li>
+        <li class="bar">
+            <a href="test-login.html">
+                <button class="button log-in">Log In</button>
+            </a>
+        </li>
+    </div>
+
+    <main id="main-holder">
+        <h1>Login</h1>
+        <b>Please log in to enter</b>
+
+        <div id="login-error-msg-holder">
+            <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+        </div>
+
+        <form id="login-form">
+            <input type="text" name="username" class="login-form-field" placeholder="Username">
+            <input type="password" name="password" class="login-form-field" placeholder="Password">
+            <input type="submit" value="Login" id="login-form-submit">
+        </form>
+
+    </main>
+
+    <main id="main-holder">
+        <h1>Sign Up</h1>
+        <b>Fill in the details to sign up.</b>
+
+        <div id="login-error-msg-holder">
+            <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+        </div>
+
+        <form id="login-form">
+            <input type="text" name="username" class="login-form-field" placeholder="Username">
+            <input type="text" name="email" class="login-form-field" placeholder="Email Address">
+            <input type="password" name="password" class="login-form-field" placeholder="Password">
+            <input type="password" name="confirmpassword" class="login-form-field" placeholder="Confirm Password">
+            <input type="submit" value="Sign Up" id="login-form-submit">
+        </form>
+
+    </main>
+</body>
+
+</html>

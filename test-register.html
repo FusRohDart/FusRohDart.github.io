@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <script src="login-page.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="authstyles.css">
     <style>
         
@@ -14,8 +17,8 @@
 
 <body>
     <main id="main-holder">
-        <h1>Register</h1>
-        <b>Please log in to enter</b>
+        <h1>Sign Up</h1>
+        <b>Fill in the details to sign up.</b>
 
         <div id="login-error-msg-holder">
             <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
@@ -23,8 +26,10 @@
 
         <form id="login-form">
             <input type="text" name="username" class="login-form-field" placeholder="Username">
+            <input type="text" name="email" class="login-form-field" placeholder="Email Address">
             <input type="password" name="password" class="login-form-field" placeholder="Password">
-            <input type="submit" value="Login" id="login-form-submit">
+            <input type="password" name="confirmpassword" class="login-form-field" placeholder="Confirm Password">
+            <input type="submit" value="Sign Up" id="login-form-submit">
         </form>
 
     </main>

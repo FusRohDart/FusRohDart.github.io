@@ -17,7 +17,7 @@ h1 {
 }
 
 #main-holder {
-    width: 45%;
+    width: 30%;
     height: 60%;
     display: grid;
     justify-items: center;
@@ -60,6 +60,7 @@ h1 {
 }
 
 .login-form-field::placeholder {
+    font-family: Archivo, sans-serif;
     color: #000;
 }
 
