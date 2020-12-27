@@ -23,6 +23,11 @@ body {
     background-color: #100E20;
 }
 
+#title {
+    font-family: Metrophobic, sans-serif;
+    font-size: 20px;
+}
+
 
 .topnav {
     overflow: hidden;
