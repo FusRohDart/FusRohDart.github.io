@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign Up</title>
     <script src="login-page.js" defer></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
@@ -16,20 +16,20 @@
 </head>
 
 <body>
-    <main id="main-holder">
+    <main class="main-holder signup">
         <h1>Sign Up</h1>
         <b>Fill in the details to sign up.</b>
 
-        <div id="login-error-msg-holder">
-            <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+        <div id="error-msg-holder">
+            <p id="error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
         </div>
 
-        <form id="login-form">
-            <input type="text" name="username" class="login-form-field" placeholder="Username">
-            <input type="text" name="email" class="login-form-field" placeholder="Email Address">
-            <input type="password" name="password" class="login-form-field" placeholder="Password">
-            <input type="password" name="confirmpassword" class="login-form-field" placeholder="Confirm Password">
-            <input type="submit" value="Sign Up" id="login-form-submit">
+        <form id="form-body">
+            <input type="text" name="username" class="form-field" placeholder="Username">
+            <input type="text" name="email" class="form-field" placeholder="Email Address">
+            <input type="password" name="password" class="form-field" placeholder="Password">
+            <input type="password" name="confirmpassword" class="form-field" placeholder="Confirm Password">
+            <input type="submit" value="Sign Up" id="form-submit">
         </form>
 
     </main>
